@@ -1,5 +1,7 @@
 # H-E-B Cashier Practice Simulator
 
+double click and open it on another tab
+
 https://heb-cashier-relearn-practice.vercel.app/
 
 A personal web app for practicing H-E-B cashier workflows with a virtual POS keyboard and fake checkout screen.
