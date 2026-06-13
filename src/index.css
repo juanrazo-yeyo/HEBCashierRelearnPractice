@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+
+:root {
+  --screen-green: #00ff88;
+  --screen-dim: #00aa55;
+  --screen-bg: #001a0d;
+  --key-blue: #2c4fa3;
+  --key-yellow: #d4b800;
+  --key-red: #c0392b;
+  --key-green: #1a7a3a;
+  --key-teal: #0e7a7a;
+  --key-gray: #9ca3af;
+  --key-white: #e5e7eb;
+  --register-bg: #1a1a2e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0f0f1a;
+  font-family: 'Share Tech Mono', monospace;
+  color: #e2e8f0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* POS Screen scanline effect */
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Key press animation */
+.key-press {
+  transform: scale(0.93) translateY(2px);
+  box-shadow: none !important;
+  transition: all 0.08s ease;
+}
+
+/* Correct flash */
+@keyframes correctFlash {
+  0% { background-color: inherit; }
+  30% { background-color: #00ff88; color: #000; }
+  100% { background-color: inherit; }
+}
+
+/* Wrong flash */
+@keyframes wrongFlash {
+  0% { background-color: inherit; }
+  30% { background-color: #ff3333; color: #fff; }
+  100% { background-color: inherit; }
+}
+
+/* Screen text blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Hint pulse */
+@keyframes hintPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,136,0.7); }
+  50% { box-shadow: 0 0 0 8px rgba(0,255,136,0); }
+}
+
+.hint-active {
+  animation: hintPulse 1.2s ease infinite;
+}
+
+/* Receipt paper texture */
+.receipt-paper {
+  background: repeating-linear-gradient(
+    0deg,
+    #fff,
+    #fff 24px,
+    #f0f0f0 24px,
+    #f0f0f0 25px
+  );
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f0f1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+
+/* Keyboard body texture */
+.keyboard-body {
+  background: linear-gradient(135deg, #d1d5db 0%, #9ca3af 50%, #d1d5db 100%);
+  border: 3px solid #6b7280;
+  box-shadow: 
+    0 8px 32px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -2px 0 rgba(0,0,0,0.2);
+}
+
+/* Key base style */
+.key-base {
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  box-shadow:
+    0 4px 0 rgba(0,0,0,0.4),
+    0 6px 6px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.key-base:active,
+.key-base.pressed {
+  transform: translateY(3px);
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.4),
+    0 2px 3px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.key-blue { background: linear-gradient(135deg, #3b5fc0, #2341a0); color: white; }
+.key-yellow { background: linear-gradient(135deg, #e6cc00, #c4ad00); color: #1a1a00; }
+.key-red { background: linear-gradient(135deg, #d94040, #b83030); color: white; }
+.key-green { background: linear-gradient(135deg, #1e9448, #157835); color: white; }
+.key-teal { background: linear-gradient(135deg, #0f8c8c, #0a6f6f); color: white; }
+.key-gray { background: linear-gradient(135deg, #9ca3af, #6b7280); color: #1a1a1a; }
+.key-white { background: linear-gradient(135deg, #f3f4f6, #d1d5db); color: #111; }
+.key-dark-blue { background: linear-gradient(135deg, #1e3a8a, #1e40af); color: white; }
