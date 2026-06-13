@@ -1,6 +1,6 @@
 # H-E-B Cashier Practice Simulator
 
-double click and open it on another tab
+right click and open it on another tab
 
 https://heb-cashier-relearn-practice.vercel.app/
 
